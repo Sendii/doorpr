@@ -170,12 +170,13 @@ $(document).ready(function(){
       var floor = Math.floor(Math.random()*myArray2.length)
       // console.log(floor)
       var ea2 = myArray2[floor]
-      console.log(myArray[floor])
-      if(typeof(ea2) !== "undefined" && ea2 == 1){
-        document.getElementById("demo").innerHTML = myArray[floor];
-        document.getElementById("nama").value = myArray[floor];
-        stop()
-      }
+      setTimeout(function(){
+        if(typeof(ea2) !== "undefined" && ea2 == 1 || ea2 == 2 || ea2 == 3){
+          document.getElementById("demo").innerHTML = myArray[floor];
+          document.getElementById("nama").value = myArray[floor];
+          stop()
+        }
+      }, 3000)      
     }
     mulai();
     // document.getElementById("button").innerHTML = '<button id="stop" class="btn btn-danger btn-lg" onclick="stop();" autofocus style="font-size: 25px;">Stop...!!!</button>';

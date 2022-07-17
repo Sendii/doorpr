@@ -15,34 +15,35 @@
                     <h4>Data Peserta</h4>
                 </div>
                 <div class="card-body">
-                <form action="<?=base_url()?>admin/simpan" method="post">
-                                <button type="submit" class="btn btn-primary btn-sm mb-2 float-right">Update</button>
-                            
+                    <form action="<?=base_url()?>admin/simpan" method="post">
+                        <button type="submit" class="btn btn-primary btn-sm mb-2 float-right">Update</button>
+
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Pemenang</th>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Pemenang</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $no = 1; ?>
                                 <?php foreach($peserta as $p) { ?>
-                                <tr>
-                                <th scope="row">1</th>
-                                <td><?=$p->first_name; ?></td>
-                                <td>
-                                    <?php if($p->pemenang_keberapa){ ?>
-                                        <input type="checkbox" checked class="form-control" name="id_peserta" value="<?= $p->id ?>">
-                                        <?php } else { ?>
-                                        <input type="checkbox" class="form-control" name="id_peserta" value="<?= $p->id ?>">
-                                        <?php } ?>                
-                                </td>
-                                </tr>
+                                    <tr>
+                                        <th scope="row"><?= $no++; ?></th>
+                                        <td><?=$p->first_name; ?></td>
+                                        <td>
+                                            <?php if($p->pemenang_keberapa){ ?>
+                                                <input type="checkbox" checked class="form-control" name="id_peserta[]" value="<?= $p->id; ?>">
+                                            <?php } else { ?>
+                                                <input type="checkbox" class="form-control" name="id_peserta[]" value="<?= $p->id; ?>">
+                                            <?php } ?>                
+                                        </td>
+                                    </tr>
                                 <?php } ?>
                             </tbody>
                         </table>
-                        </form>
+                    </form>
                 </div>
             </div>
         </div>

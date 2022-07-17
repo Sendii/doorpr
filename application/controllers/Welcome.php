@@ -20,16 +20,21 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->db->select('first_name AS nama');
+		$this->db->select('first_name AS nama,pemenang_keberapa');
 		// $this->db->limit(30000);
 		$peserta = $this->db->get('peserta')->result();
 		$data_peserta = [];
+		$data_urutanpemenang = [];
 		foreach ($peserta as $row){
 		    $data_peserta[] = '"'.$row->nama.'"';
+			$data_urutanpemenang[] = $row->pemenang_keberapa;
 		}
 		$data_peserta_array = implode(',',$data_peserta);
+		$data_urutanpemenang_array = implode(',',$data_urutanpemenang);
 		$data = array('peserta' => $data_peserta_array, 
+					'data_urutanpemenang' => $data_urutanpemenang_array,
 					'peserta2' => $data_peserta );
+		
 		// echo implode(',', $peserta[]);
 		$this->load->view('doorprize', $data);
 	}
@@ -38,8 +43,13 @@ class Welcome extends CI_Controller {
 	{
 		$data_pemenang = $this->db->where('first_name =', $this->input->post('nama'))->get('peserta')->row();
 		// echo $data_pemenang->id;
-		$data = array('id_peserta' => $data_pemenang->id, 'pemenang_ke' => $this->input->post('ke'));
+		// $data = array('id_peserta' => $data_pemenang->id, 'pemenang_ke' => $this->input->post('ke'));
+		$data = array('id_peserta' => $data_pemenang->id, 'pemenang_ke' => 1);
 		$this->db->insert('data_pemenang', $data);
 		$this->load->view('hasil');
+	}
+
+	public function show(){
+		dd(123);
 	}
 }

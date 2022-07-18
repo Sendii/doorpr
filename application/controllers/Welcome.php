@@ -45,7 +45,7 @@ class Welcome extends CI_Controller {
 		// echo $data_pemenang->id;
 		// $data = array('id_peserta' => $data_pemenang->id, 'pemenang_ke' => $this->input->post('ke'));
 		$this->db->query("DELETE FROM data_pemenang");
-		$data = array('id_peserta' => $data_pemenang->id, 'pemenang_ke' => 1);
+		$data = array('id_peserta' => $data_pemenang->id, 'pemenang_ke' => 1, 'nama_alias' => $this->input->post('nama_alias'));
 		$this->db->insert('data_pemenang', $data);
 		$this->load->view('hasil');
 	}

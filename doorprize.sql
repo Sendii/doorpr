@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 17 Jul 2022 pada 10.37
+-- Waktu pembuatan: 18 Jul 2022 pada 01.55
 -- Versi server: 5.7.24
 -- Versi PHP: 7.4.16
 
@@ -31,15 +31,16 @@ CREATE TABLE `data_pemenang` (
   `id` int(11) NOT NULL,
   `id_peserta` int(11) NOT NULL,
   `pemenang_ke` int(11) NOT NULL,
-  `tanggal_jam` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `tanggal_jam` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `nama_alias` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `data_pemenang`
 --
 
-INSERT INTO `data_pemenang` (`id`, `id_peserta`, `pemenang_ke`, `tanggal_jam`) VALUES
-(1, 2149, 1, '2022-07-17 10:36:04');
+INSERT INTO `data_pemenang` (`id`, `id_peserta`, `pemenang_ke`, `tanggal_jam`, `nama_alias`) VALUES
+(7, 7, 1, '2022-07-18 01:55:00', 'Joh*** *******');
 
 -- --------------------------------------------------------
 
@@ -57,18 +58,18 @@ CREATE TABLE `peserta` (
 -- Dumping data untuk tabel `peserta`
 --
 
-INSERT INTO `peserta` (`id`,`pemenang_keberapa`, `first_name`) VALUES
+INSERT INTO `peserta` (`id`, `pemenang_keberapa`, `first_name`) VALUES
 (1, NULL, 'Puji Andriani'),
 (2, NULL, 'Mayang Riza Andini'),
 (3, NULL, 'Ulva Mayasari'),
 (4, NULL, 'Zarah Mann'),
 (5, NULL, 'Slamet Putra'),
 (6, NULL, 'Sakti Mansur'),
-(7, NULL, 'Johan Hutapea'),
+(7, 1, 'Johan Hutapea'),
 (8, NULL, 'Karen Puspasari'),
 (9, NULL, 'Warji Adriansyah'),
 (10, NULL, 'Yusuf Hidayat'),
-(11, 1, 'Farhan Ramadhan'),
+(11, NULL, 'Farhan Ramadhan'),
 (12, NULL, 'Eka Septiasa Putri'),
 (13, NULL, 'Mahesa Putra Alfian'),
 (14, NULL, 'Reza Saputra Andika'),
@@ -100,13 +101,13 @@ ALTER TABLE `peserta`
 -- AUTO_INCREMENT untuk tabel `data_pemenang`
 --
 ALTER TABLE `data_pemenang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `peserta`
 --
 ALTER TABLE `peserta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

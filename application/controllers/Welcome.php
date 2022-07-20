@@ -20,23 +20,29 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->db->select('first_name AS nama,pemenang_keberapa');
+		if ($this->input->is_ajax_request()) {
+			$peserta = $this->db->get('peserta')->result();
+			echo json_encode($peserta);
+			// echo $peserta;
+		}else{
+			$this->db->select('first_name AS nama,pemenang_keberapa');
 		// $this->db->limit(30000);
-		$peserta = $this->db->get('peserta')->result();
-		$data_peserta = [];
-		$data_urutanpemenang = [];
-		foreach ($peserta as $row){
-		    $data_peserta[] = '"'.$row->nama.'"';
-			$data_urutanpemenang[] = $row->pemenang_keberapa;
-		}
-		$data_peserta_array = implode(',',$data_peserta);
-		$data_urutanpemenang_array = implode(',',$data_urutanpemenang);
-		$data = array('peserta' => $data_peserta_array, 
-					'data_urutanpemenang' => $data_urutanpemenang_array,
-					'peserta2' => $data_peserta );
-		
+			$peserta = $this->db->get('peserta')->result();
+			$data_peserta = [];
+			$data_urutanpemenang = [];
+			foreach ($peserta as $row){
+				$data_peserta[] = '"'.$row->nama.'"';
+				$data_urutanpemenang[] = $row->pemenang_keberapa;
+			}
+			$data_peserta_array = implode(',',$data_peserta);
+			$data_urutanpemenang_array = implode(',',$data_urutanpemenang);
+			$data = array('peserta' => $data_peserta_array, 
+				'data_urutanpemenang' => $data_urutanpemenang_array,
+				'peserta2' => $data_peserta );
+			
 		// echo implode(',', $peserta[]);
-		$this->load->view('doorprize', $data);
+			$this->load->view('doorprize', $data);
+		}		
 	}
 
 	public function simpan()

@@ -46,136 +46,130 @@
       <div class="content-wrapper" style="background-color: #000; background-repeat: no-repeat; background-size: auto;">
         <!-- Content Header (Page header) -->
         <div class="content-header">
+
           <div class="container" style="padding-left: 50.5px;margin-left:0;max-width: 1300px;">
             <div class="row mb-2">
-              <div class="col-sm-3">
-                <br/>
-                <br/>
-                <br/>
-
-
-                <br/>
-                <br/>
-            <!-- <br/>
-              <div class="icheck-success d-inline" style="line-height:2;">
-                <input type="radio" id="pertama" name="tuk" value="1" onclick="handleClick(this);"> 
-                <label for="pertama">
-                  <h4 class="m-0" style="font-family:'Oswald', Arial;color: #fff;">Pemenang ke-1</h4>
-                </label>
+              <div class="col-sm-4">
+                <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
               </div>
-            <br/>
-              <div class="icheck-success d-inline" style="line-height:2;">
-                <input type="radio" id="kedua" name="tuk" value="2" onclick="handleClick(this);"> 
-                <label for="kedua">
-                  <h4 class="m-0" style="font-family:'Oswald', Arial;color: #fff;">Pemenang Ke-2</h4>
-                </label>
-              </div>
-            <br/>
-              <div class="icheck-success d-inline" style="line-height:2;">
-                <input type="radio" id="ketiga" name="tuk" value="3" onclick="handleClick(this);"> 
-                <label for="ketiga">
-                  <h4 class="m-0" style="font-family:'Oswald', Arial;color: #fff;">Pemenang Ke-3</h4>
-                </label>
-              </div> -->
-              <br/><br/><br/><br/>
-            </div><!-- /.col -->
-            <div class="col-sm-6" id="imgs">
+              <div class="col-sm-6" id="imgs">
 
-            </div>
-            <div class="col-sm-3">
-              <br/>
-              <br/>
-              <br/>
-              <br/>
-              <h5 class="m-0" style="font-family:'Oswald', Arial;color: #fff;font-size: 35px;line-height:1.2; text-align: left;">Pemenang :</h5>
-              <form action="<?=base_url()?>welcome/simpan" method="post" class="jsform" id="myform">
-                <input type="hidden" name="nama" id="nama">
-                <input type="hidden" name="nama_alias" id="nama_alias">
-                <input type="hidden" name="ke" id="ke">
-              </form>
-              <div id="hasil_pemenang"><?php include "hasil.php"; ?></div>
-            </div>
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-        <div class="container">
-          <div class="row mb-2">
-            <div class="col-sm-12">
-              <!--<br/><br/><br/><br/><br/>-->
-              <div class="text-center" style="color: #fff;line-height:1;">
-                <!-- <h1 style="font-family:'Oswald', Arial;font-size: 75px;">--- --- ---/h1> -->
-                  <h1 style="font-family:'Oswald', Arial;font-size: 65px;line-height:1;" id="demo">---- ---- ----</h1>
-                </div>
-                <br/>
-                <!--<br/>-->
-                <!--<br/>-->
-                <br/>
-                <div class="text-center" id="button">
-                  <button class="btn btn-success btn-lg" onclick="start();" autofocus style="font-size: 25px;">Mulai...!!!</button>
-                </div>
+              </div>
+              <div class="col-sm-2">
                 <br/>
                 <br/>
-                <div class="text-center" style="color: #ffc107;">
+                <br/>
+                <br/>
+                <h5 class="m-0" style="font-family:'Oswald', Arial;color: #fff;font-size: 35px;line-height:1.2; text-align: left;">Pemenang :</h5>
+                <form action="<?=base_url()?>welcome/simpan" method="post" class="jsform" id="myform">
+                  <input type="hidden" name="nama" id="nama">
+                  <input type="hidden" name="nama_alias" id="nama_alias">
+                  <input type="hidden" name="ke" id="ke">
+                </form>
+                <div id="hasil_pemenang"><?php include "hasil.php"; ?></div>
+              </div>
+            </div><!-- /.row -->
+          </div><!-- /.container-fluid -->
+          <div class="container">
+            <div class="row mb-2">
+              <div class="col-sm-12">
+                <!--<br/><br/><br/><br/><br/>-->
+                <div class="text-center" style="color: #fff;line-height:1;">
                   <!-- <h1 style="font-family:'Oswald', Arial;font-size: 75px;">--- --- ---/h1> -->
-                    <h1 style="font-family:'Oswald', Arial;font-size: 35px;" id="pemenang"></h1>
+                    <h1 style="font-family:'Oswald', Arial;font-size: 65px;line-height:1;" id="demo">---- ---- ----</h1>
+                  </div>
+                  <br/>
+                  <!--<br/>-->
+                  <!--<br/>-->
+                  <br/>
+                  <div class="text-center" id="button">
+                    <button class="btn btn-success btn-lg" onclick="start();" autofocus style="font-size: 25px;">Mulai...!!!</button>
+                  </div>
+                  <br/>
+                  <br/>
+                  <div class="text-center" style="color: #ffc107;">
+                    <!-- <h1 style="font-family:'Oswald', Arial;font-size: 75px;">--- --- ---/h1> -->
+                      <h1 style="font-family:'Oswald', Arial;font-size: 35px;" id="pemenang"></h1>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            <!-- /.content-header -->
           </div>
-          <!-- /.content-header -->
         </div>
-      </div>
 
-      <audio id="myAudio">
-        <source src="<?=base_url()?>assets/sorak.mp3" type="audio/mpeg">
-        </audio>
-        <script type="text/javascript">
-
-          var myArray = [<?=$peserta?>];
-
-          var myArray2 = [<?=$data_urutanpemenang?>];
-
-          function handleClick(tuk) {
-            var pemenang = tuk.value;
-            if(pemenang == 3){
-              document.getElementById("pemenang").innerHTML = 'Pemenang ke-3 :<br/>';
-              document.getElementById("demo").innerHTML = "---- ---- ----";
-              document.getElementById("button").innerHTML = '<button class="btn" autofocus><img onclick="start();" src="<?=base_url()?>assets/dist/img/start.png"></button>';
-              document.getElementById("ke").value = 3;
-            }else if(pemenang == 2){
-              document.getElementById("pemenang").innerHTML = 'Pemenang ke-2 :<br/><br/>';
-              document.getElementById("demo").innerHTML = "---- ---- ----";
-              document.getElementById("button").innerHTML = '<button class="btn" autofocus><img onclick="start();" src="<?=base_url()?>assets/dist/img/start.png"></button>';
-              document.getElementById("ke").value = 2;
-            }else if(pemenang == 1){
-              document.getElementById("pemenang").innerHTML = 'Pemenang ke-1 :<br/> <br/>';
-              document.getElementById("demo").innerHTML = "---- ---- ----";
-              document.getElementById("button").innerHTML = '<button class="btn" autofocus><img onclick="start();" src="<?=base_url()?>assets/dist/img/start.png"></button>';
-              document.getElementById("ke").value = 1;
-            }else{
-              document.getElementById("pemenang").innerHTML = '';
-              document.getElementById("demo").innerHTML = "---- ---- ----";
-            }
-          }
-
-          function start(){
-            function mulai(){
-              t = setTimeout(mulai,5);
-              var floor = Math.floor(Math.random()*myArray2.length)
-              let _nama = myArray[floor].split(' ')
-              let _rahasia = '*'
-              if(_nama.length == 2){
-                var _fix = _nama[0].replace(_nama[0].slice(3), _rahasia.repeat(3)) + ' ' + _rahasia.repeat(_nama[1].length)
-              }
-              if(_nama.length == 3){
-                console.log(_nama[0].length)
-                if(_nama[0].length != 3){
-                  _fix = _nama[0].replace(_nama[0].slice(3), _rahasia.repeat(3)) + ' ' + _rahasia.repeat(_nama[1].length) + ' ' + _rahasia.repeat(_nama[2].length)
-                }else{
-                  _fix = _nama[0].replace(_nama[0].slice(2), _rahasia.repeat(2)) + ' ' + _rahasia.repeat(_nama[1].length) + ' ' + _rahasia.repeat(_nama[2].length)
+        <audio id="myAudio">
+          <source src="<?=base_url()?>assets/sorak.mp3" type="audio/mpeg">
+          </audio>
+          <script type="text/javascript">
+            $(document).ready(function(){
+              $.ajax({
+                type: 'get',
+                url: " <?= site_url('/') ?>",
+                dataType: 'json',
+                beforeSend: function(){
+                  // console.log(11)
+                },
+                success: function(res) {
+                  let val = ''
+                  $.each(res, function(k, v){
+                    console.log(v.first_name)
+                    val += v.first_name+'\n'
+                  })
+                  $('textarea').val(val)
+                },
+                error: function(err){
+                  // console.log(err.responseText)
                 }
+              });
+            })
+
+            var myArray = [<?=$peserta?>];
+
+            var myArray2 = [<?=$data_urutanpemenang?>];
+
+            function handleClick(tuk) {
+              var pemenang = tuk.value;
+              if(pemenang == 3){
+                document.getElementById("pemenang").innerHTML = 'Pemenang ke-3 :<br/>';
+                document.getElementById("demo").innerHTML = "---- ---- ----";
+                document.getElementById("button").innerHTML = '<button class="btn" autofocus><img onclick="start();" src="<?=base_url()?>assets/dist/img/start.png"></button>';
+                document.getElementById("ke").value = 3;
+              }else if(pemenang == 2){
+                document.getElementById("pemenang").innerHTML = 'Pemenang ke-2 :<br/><br/>';
+                document.getElementById("demo").innerHTML = "---- ---- ----";
+                document.getElementById("button").innerHTML = '<button class="btn" autofocus><img onclick="start();" src="<?=base_url()?>assets/dist/img/start.png"></button>';
+                document.getElementById("ke").value = 2;
+              }else if(pemenang == 1){
+                document.getElementById("pemenang").innerHTML = 'Pemenang ke-1 :<br/> <br/>';
+                document.getElementById("demo").innerHTML = "---- ---- ----";
+                document.getElementById("button").innerHTML = '<button class="btn" autofocus><img onclick="start();" src="<?=base_url()?>assets/dist/img/start.png"></button>';
+                document.getElementById("ke").value = 1;
+              }else{
+                document.getElementById("pemenang").innerHTML = '';
+                document.getElementById("demo").innerHTML = "---- ---- ----";
               }
-              
+            }
+
+            function start(){
+              function mulai(){
+                t = setTimeout(mulai,5);
+                var floor = Math.floor(Math.random()*myArray2.length)
+                let _nama = myArray[floor].split(' ')
+                let _rahasia = '*'
+                if(_nama.length == 2){
+                  var _fix = _nama[0].replace(_nama[0].slice(3), _rahasia.repeat(3)) + ' ' + _rahasia.repeat(_nama[1].length)
+                }
+                if(_nama.length == 3){
+                  console.log(_nama[0].length)
+                  if(_nama[0].length != 3){
+                    _fix = _nama[0].replace(_nama[0].slice(3), _rahasia.repeat(3)) + ' ' + _rahasia.repeat(_nama[1].length) + ' ' + _rahasia.repeat(_nama[2].length)
+                  }else{
+                    _fix = _nama[0].replace(_nama[0].slice(2), _rahasia.repeat(2)) + ' ' + _rahasia.repeat(_nama[1].length) + ' ' + _rahasia.repeat(_nama[2].length)
+                  }
+                }
+
               // var randomItem = myArray[Math.floor(Math.random()*myArray.length)];
               document.getElementById("demo").innerHTML = _fix;
               document.getElementById("nama").value = myArray[floor];
@@ -192,7 +186,8 @@
             }
             mulai();
     // document.getElementById("button").innerHTML = '<button id="stop" class="btn btn-danger btn-lg" onclick="stop();" autofocus style="font-size: 25px;">Stop...!!!</button>';
-    document.getElementById("button").innerHTML = '<button class="btn" onclick="stop();" autofocus><img src="<?=base_url()?>assets/dist/img/stop.png"></button>';
+    // document.getElementById("button").innerHTML = '<button class="btn" onclick="stop();" autofocus><img src="<?=base_url()?>assets/dist/img/stop.png"></button>';
+    document.getElementById("button").innerHTML = '';
     document.getElementById("stop").focus();
   }
 

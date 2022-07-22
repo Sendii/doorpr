@@ -21,12 +21,26 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		if ($this->input->is_ajax_request()) {
-			$peserta = $this->db->get('peserta')->result();
-			echo json_encode($peserta);
-			// echo $peserta;
+			if ($this->input->get('method') == 'fetch') {
+				$peserta = $this->db->get('peserta')->result();
+				echo json_encode($peserta);
+			}else{
+
+				// $listName = explode('\n', $this->input->get('value'));
+				$this->db->query("DELETE FROM peserta where pemenang_keberapa is null");
+				$pemenang = $this->db->query("SELECT * FROM peserta where pemenang_keberapa = 1")->row();
+				$nama_pemenang = $pemenang->first_name;
+				$listName = preg_split('/\r\n|[\r\n]/', $this->input->get('value'));
+				foreach ($listName as $value) {
+					if ($value != "" && $value != $nama_pemenang) {
+						$this->db->query("INSERT INTO peserta(first_name) VALUES ('".$value."')");
+					}					
+				}
+				$peserta2 = $this->db->get('peserta')->result();
+				echo json_encode($peserta2);
+			}
 		}else{
 			$this->db->select('first_name AS nama,pemenang_keberapa');
-		// $this->db->limit(30000);
 			$peserta = $this->db->get('peserta')->result();
 			$data_peserta = [];
 			$data_urutanpemenang = [];

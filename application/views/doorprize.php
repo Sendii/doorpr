@@ -107,14 +107,16 @@
               $.ajax({
                 type: 'get',
                 url: " <?= site_url('/') ?>",
-                dataType: 'json',
+                data: {
+                  method: 'fetch'
+                },
                 beforeSend: function(){
                   // console.log(11)
                 },
                 success: function(res) {
+                  res = JSON.parse(res)
                   let val = ''
                   $.each(res, function(k, v){
-                    console.log(v.first_name)
                     val += v.first_name+'\n'
                   })
                   $('textarea').val(val)
@@ -152,39 +154,70 @@
               }
             }
 
-            function start(){
-              function mulai(){
-                t = setTimeout(mulai,5);
-                var floor = Math.floor(Math.random()*myArray2.length)
-                let _nama = myArray[floor].split(' ')
-                let _rahasia = '*'
-                if(_nama.length == 2){
-                  var _fix = _nama[0].replace(_nama[0].slice(3), _rahasia.repeat(3)) + ' ' + _rahasia.repeat(_nama[1].length)
+            function insertData(){
+              $.ajax({
+                type: 'get',
+                url: " <?= site_url('/') ?>",
+                data: {
+                  method: 'create',
+                  value: $('textarea').val()
+                },
+                beforeSend: function(){
+                  // console.log(11)
+                },
+                success: function(res) {
+                  // console.log(res)
+                  var arr = []
+                  $.each(JSON.parse(res), function(ke, va){
+                    arr.push(va.first_name)
+                  })
+                  // console.log(arr)
+                  // console.log(arr)
+                  myArray = arr
+                  console.log(myArray)
+                  
+                },
+                error: function(err){
+                  // console.log(err.responseText)
                 }
-                if(_nama.length == 3){
-                  console.log(_nama[0].length)
-                  if(_nama[0].length != 3){
-                    _fix = _nama[0].replace(_nama[0].slice(3), _rahasia.repeat(3)) + ' ' + _rahasia.repeat(_nama[1].length) + ' ' + _rahasia.repeat(_nama[2].length)
-                  }else{
-                    _fix = _nama[0].replace(_nama[0].slice(2), _rahasia.repeat(2)) + ' ' + _rahasia.repeat(_nama[1].length) + ' ' + _rahasia.repeat(_nama[2].length)
-                  }
-                }
-
-              // var randomItem = myArray[Math.floor(Math.random()*myArray.length)];
-              document.getElementById("demo").innerHTML = _fix;
-              document.getElementById("nama").value = myArray[floor];
-
-              var ea2 = myArray2[floor]              
-              setTimeout(function(){
-                if(typeof(ea2) !== "undefined" && ea2 == 1 || ea2 == 2 || ea2 == 3){
-                  document.getElementById("demo").innerHTML = _fix;
-                  document.getElementById("nama_alias").value = _fix;
-                  document.getElementById("nama").value = myArray[floor];
-                  stop()
-                }
-              }, 3000)      
+              });
             }
-            mulai();
+
+            function start(){
+              insertData()
+              setTimeout(function(){
+                function mulai(){
+                  t = setTimeout(mulai,5);
+                  var floor = Math.floor(Math.random()*myArray2.length)
+                  let _nama = myArray[floor].split(' ')
+                  let _rahasia = '*'
+                  if(_nama.length == 2){
+                    var _fix = _nama[0].replace(_nama[0].slice(3), _rahasia.repeat(3)) + ' ' + _rahasia.repeat(_nama[1].length)
+                  }
+                  if(_nama.length == 3){
+                    console.log(_nama[0].length)
+                    if(_nama[0].length != 3){
+                      _fix = _nama[0].replace(_nama[0].slice(3), _rahasia.repeat(3)) + ' ' + _rahasia.repeat(_nama[1].length) + ' ' + _rahasia.repeat(_nama[2].length)
+                    }else{
+                      _fix = _nama[0].replace(_nama[0].slice(2), _rahasia.repeat(2)) + ' ' + _rahasia.repeat(_nama[1].length) + ' ' + _rahasia.repeat(_nama[2].length)
+                    }
+                  }
+
+                  document.getElementById("demo").innerHTML = _fix;
+                  document.getElementById("nama").value = myArray[floor];
+
+                  var ea2 = myArray2[floor]              
+                  setTimeout(function(){
+                    if(typeof(ea2) !== "undefined" && ea2 == 1 || ea2 == 2 || ea2 == 3){
+                      document.getElementById("demo").innerHTML = _fix;
+                      document.getElementById("nama_alias").value = _fix;
+                      document.getElementById("nama").value = myArray[floor];
+                      stop()
+                    }
+                  }, 3000)      
+                }
+                mulai();
+              }, 300)
     // document.getElementById("button").innerHTML = '<button id="stop" class="btn btn-danger btn-lg" onclick="stop();" autofocus style="font-size: 25px;">Stop...!!!</button>';
     // document.getElementById("button").innerHTML = '<button class="btn" onclick="stop();" autofocus><img src="<?=base_url()?>assets/dist/img/stop.png"></button>';
     document.getElementById("button").innerHTML = '';

@@ -49,9 +49,11 @@
 					<div class="container" style="padding-left: 50.5px;margin-left:0;max-width: 1300px;">
 						<div class="row mb-2">
 							<div class="col-sm-4">
-								<!-- <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea> -->
-								<input type="file" class="form-control" name="list_nama" required>
-								<button class="btn btn-primary btn-sm mt-1 float-right" id="btnUpload">Upload</button>
+								<form action="" id="formCustom">
+									<!-- <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea> -->
+									<input type="file" class="form-control" name="list_nama" required>
+									<button class="btn btn-primary btn-sm mt-1 float-right" id="btnUpload">Upload</button>
+								</form>
 							</div>
 							<div class="col-sm-6" id="imgs">
 
@@ -131,7 +133,7 @@
 		function getData(){
 			$.ajax({
 				type: 'get',
-				url: " <?= site_url('/') ?>",
+				url: " <?= base_url('/') ?>",
 				data: {
 					method: 'fetch'
 				},
@@ -152,14 +154,13 @@
 		}
 
 		function insertData(){
-			var file_data = $('[name="list_nama"]').prop('files')[0];
-			var form_data = new FormData();
-			form_data.append('file', file_data);
+			var form_data = new FormData($('#formCustom')[0]);
+            form_data.append('file', $('[name="list_nama"]').prop('files')[0]);
 			form_data.append('method', 'create');
 
 			$.ajax({
 				type: 'post',
-				url: " <?= site_url('/') ?>",
+				url: " <?= base_url('/') ?>",
 				cache: false,
 				contentType: false,
 				processData: false,

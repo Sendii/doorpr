@@ -51,7 +51,7 @@ class Welcome extends CI_Controller {
 					// $lines = file('uploads/'.$dataupload['file_name']);
 					$contents = file_get_contents('uploads/'.$dataupload['file_name']);
 					$lines = explode(("\n"), $contents);
-					$this->db->query("DELETE FROM peserta where pemenang_keberapa is null");
+					$this->db->query("DELETE FROM peserta");
 					foreach ($lines as $value)
 					{
 						$this->db->query("INSERT INTO peserta SET first_name=?", [$value]);

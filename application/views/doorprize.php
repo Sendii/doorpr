@@ -197,7 +197,11 @@
 					t = setTimeout(mulai,5);
 					var floor = Math.floor(Math.random()*myArray2.length)
 					let _nama = myArray[floor].split(' ')
+					console.log(_nama.length)
 					let _rahasia = '*'
+					if(_nama.length == 1){
+						var _fix = _nama[0].replace(_nama[0].slice(3), _rahasia.repeat(3))
+					}
 					if(_nama.length == 2){
 						var _fix = _nama[0].replace(_nama[0].slice(3), _rahasia.repeat(3)) + ' ' + _rahasia.repeat(_nama[1].length)
 					}
@@ -235,7 +239,7 @@ function stop() {
 	clearTimeout(t);
 	document.getElementById("button").innerHTML = '<button id="start" class="btn" onclick="start();" autofocus style="font-size: 25px;"><img src="<?=base_url()?>assets/dist/img/ulang.png"></button> <button type="submit" class="btn" form="myform"><img src="<?=base_url()?>assets/dist/img/simpan.png"></button>';
 	document.getElementById("start").focus();
-	document.getElementById("myAudio").play();
+	// document.getElementById("myAudio").play();
 }
 
 </script>

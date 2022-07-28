@@ -48,7 +48,7 @@
 
 					<div class="container" style="padding-left: 50.5px;margin-left:0;max-width: 1300px;">
 						<div class="row mb-2">
-							<div class="col-sm-4">
+							<div class="col-sm-3">
 								<form action="" id="formCustom">
 									<!-- <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea> -->
 									<input type="file" class="form-control" name="list_nama" required>
@@ -58,7 +58,7 @@
 							<div class="col-sm-6" id="imgs">
 
 							</div>
-							<div class="col-sm-2">
+							<div class="col-sm-3">
 								<br/>
 								<br/>
 								<br/>

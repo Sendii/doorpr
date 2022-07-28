@@ -213,6 +213,35 @@
 							_fix = _nama[0].replace(_nama[0].slice(2), _rahasia.repeat(2)) + ' ' + _rahasia.repeat(_nama[1].length) + ' ' + _rahasia.repeat(_nama[2].length)
 						}
 					}
+					if(_nama.length == 4){
+						var _fix = _nama[0].replace(_nama[0].slice(3), _rahasia.repeat(3)) + ' ' + _rahasia.repeat(_nama[1].length) + ' ' + _rahasia.repeat(_nama[2].length) + ' ' + _rahasia.repeat(_nama[3].length)
+					}
+					if(_nama.length == 5){
+						if (_nama[0].length != 3) {
+							var _fix = _nama[0].replace(_nama[0].slice(3), _rahasia.repeat(3)) + ' ' + _rahasia.repeat(_nama[1].length) + ' ' + _rahasia.repeat(_nama[2].length) + ' ' + _rahasia.repeat(_nama[3].length) + ' ' + _rahasia.repeat(_nama[4].length)
+						}else{
+							var _fix = _nama[0] + ' ' + _rahasia.repeat(_nama[1].length) + ' ' + _rahasia.repeat(_nama[2].length) + ' ' + _rahasia.repeat(_nama[3].length) + ' ' + _rahasia.repeat(_nama[4].length)
+						}
+					}
+					if(_nama.length == 6){
+						var _fix = _nama[0].replace(_nama[0].slice(3), _rahasia.repeat(3)) + ' ' + _rahasia.repeat(_nama[1].length) + ' ' + _rahasia.repeat(_nama[2].length) + ' ' + _rahasia.repeat(_nama[3].length) + ' ' + _rahasia.repeat(_nama[4].length) + ' ' + _rahasia.repeat(_nama[5].length)
+					}
+
+					if(_nama.length == 7){
+						var _fix = _nama[0].replace(_nama[0].slice(3), _rahasia.repeat(3)) + ' ' + _rahasia.repeat(_nama[1].length) + ' ' + _rahasia.repeat(_nama[2].length) + ' ' + _rahasia.repeat(_nama[3].length) + ' ' + _rahasia.repeat(_nama[4].length) + ' ' + _rahasia.repeat(_nama[5].length) + ' ' + _rahasia.repeat(_nama[6].length)
+					}
+
+					if(_nama.length == 8){
+						var _fix = _nama[0].replace(_nama[0].slice(3), _rahasia.repeat(3)) + ' ' + _rahasia.repeat(_nama[1].length) + ' ' + _rahasia.repeat(_nama[2].length) + ' ' + _rahasia.repeat(_nama[3].length) + ' ' + _rahasia.repeat(_nama[4].length) + ' ' + _rahasia.repeat(_nama[5].length) + ' ' + _rahasia.repeat(_nama[6].length) + ' ' + _rahasia.repeat(_nama[7].length)
+					}
+
+					if(_nama.length == 9){
+						var _fix = _nama[0].replace(_nama[0].slice(3), _rahasia.repeat(3)) + ' ' + _rahasia.repeat(_nama[1].length) + ' ' + _rahasia.repeat(_nama[2].length) + ' ' + _rahasia.repeat(_nama[3].length) + ' ' + _rahasia.repeat(_nama[4].length) + ' ' + _rahasia.repeat(_nama[5].length) + ' ' + _rahasia.repeat(_nama[6].length) + ' ' + _rahasia.repeat(_nama[7].length) + ' ' + _rahasia.repeat(_nama[8].length)
+					}
+
+					if(_nama.length == 10){
+						var _fix = _nama[0].replace(_nama[0].slice(3), _rahasia.repeat(3)) + ' ' + _rahasia.repeat(_nama[1].length) + ' ' + _rahasia.repeat(_nama[2].length) + ' ' + _rahasia.repeat(_nama[3].length) + ' ' + _rahasia.repeat(_nama[4].length) + ' ' + _rahasia.repeat(_nama[5].length) + ' ' + _rahasia.repeat(_nama[6].length) + ' ' + _rahasia.repeat(_nama[7].length) + ' ' + _rahasia.repeat(_nama[8].length) + ' ' + _rahasia.repeat(_nama[9].length)
+					}
 
 					document.getElementById("demo").innerHTML = _fix;
 					document.getElementById("nama").value = myArray[floor];

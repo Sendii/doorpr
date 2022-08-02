@@ -189,8 +189,8 @@
           });
 		}
 
-		const maskify = (info) => {
-			return info.slice(0, 9).replace(/[a-zA-Z]/g, '#').concat(info.slice(9, info.len));
+		const maskify = (names) => {
+			return names.slice(0, 9).replace(/[a-zA-Z]/g, '*').concat(names.slice(9, names.len));
 		}
 
 		function start(){

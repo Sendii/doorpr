@@ -190,8 +190,9 @@
 		}
 
 		const maskify = (names, limit=8) => {
-			// return names.slice(9, names.len).replace(/[a-zA-Z]/g, '*')
-			return names.slice(0, limit) + names.slice(limit, names.length).replace(/[a-zA-Z]/g, '*')
+			let _prNames = names.slice(0, limit) + names.slice(limit, names.length).replace(/[a-zA-Z0-9]/g, '*')
+			_prNames = _prNames.replace(/[~|!|@|#|$|%|^|&|(|)|_|=|+|\|'|"|;|:|/|?|.|>|,|<]/g, '*').replace('[', '*').replace(']', '*').replace('|', '*').replace('{', '*').replace('}', '*').replace('\\', '*').replace('-', '*')
+			return _prNames
 		}
 
 		function start(){

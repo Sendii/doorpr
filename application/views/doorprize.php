@@ -275,7 +275,7 @@ function stop() {
 	clearTimeout(t);
 	document.getElementById("button").innerHTML = '<button id="start" class="btn" onclick="start();" autofocus style="font-size: 25px;"><img src="<?=base_url()?>assets/dist/img/ulang.png"></button> <button type="submit" class="btn" form="myform"><img src="<?=base_url()?>assets/dist/img/simpan.png"></button>';
 	document.getElementById("start").focus();
-	// document.getElementById("myAudio").play();
+	document.getElementById("myAudio").play();
 }
 
 </script>
